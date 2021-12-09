@@ -1,4 +1,4 @@
-"""Translator for flask app"""
+""" Translator for flask app """
 import os
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
@@ -18,14 +18,17 @@ language_translator = LanguageTranslatorV3(
 
 language_translator.set_service_url(url)
 
-def englishToFrench(englishtext):
+def english_to_french(englishtext):
+    '''The fuction translate english into french'''
     translation = language_translator.translate(
     text=englishtext,
     model_id='en-fr').get_result()
     frenchtext = translation['translations'][0]['translation']
     return frenchtext
 
-def frenchToEnglish(frenchtext):
+#french to english function
+def french_to_english(frenchtext):
+    '''The fuction translate french into english'''
     translation = language_translator.translate(
     text=frenchtext,
     model_id='fr-en').get_result()
